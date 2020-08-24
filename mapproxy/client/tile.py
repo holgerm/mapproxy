@@ -55,7 +55,8 @@ class TileURLTemplate(object):
 
     """
     def __init__(self, template, format='png'):
-        self.template= template
+        self.template= template.replace("%%40", "@", 1) 
+        # replace added to enable @ sign for hd tile urls (holgermuegge)
         self.format = format
         self.with_quadkey = True if '%(quadkey)' in template else False
         self.with_tc_path = True if '%(tc_path)' in template else False
